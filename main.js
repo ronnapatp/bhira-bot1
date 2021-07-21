@@ -110,4 +110,4 @@ client.on('message', function(message) {
     }
 
 });
-client.login('ODY3MDMxMTE1MzczMjE1Nzk1.YPbLpg.Rf7C7jST8nDZK0NViAfwzXFqp9s');
+client.login('token>Here');
