@@ -76,10 +76,23 @@ client.on("message" , msg => {
         msg.react('👍');
 }
 })
+
 client.on("message" , msg => {
     if (msg.content === '!confuse'){
         msg.channel.send("Bot will add confuse emoji to your message!")
         msg.react('🤔');
+}
+})
+client.on("message" , msg => {
+    if (msg.content === '!shy'){
+        msg.channel.send("Bot will add shy emoji to your message!")
+        msg.react('🤣');
+}
+})
+client.on("message" , msg => {
+    if (msg.content === '!angry'){
+        msg.channel.send("Bot will add angry emoji to your message!")
+        msg.react('🤬');
 }
 })
 
@@ -151,11 +164,11 @@ client.on("message" , msg => {
 // Clear massage section
 client.on('message', function(message) {
     if(message.content.startsWith("--clear")){
-        message.reply('Please dont clear more than 30 message PER TIME')
+        message.reply('DO NOT CLEAR MORE THAN 10 MESSAGE PER TIME')
         const amount = message.content.split(" ")[1];
         if(!amount)
         {
-            message.reply(`--clear <amount> " :D "`);
+            message.reply(`--clear <amount> "DO NOT CLEAR MORE THAN 10 MESSAGE"`);
             return;
         }
          if(!message.member.hasPermission("MANAGE_MESSAGES"))
@@ -169,5 +182,6 @@ client.on('message', function(message) {
     }
 
 });
+
 
 client.login('token');
