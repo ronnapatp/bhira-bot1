@@ -89,6 +89,20 @@ client.on("message" , msg => {
 })
 
 
+
+client.on("message" , msg => {
+if (msg.content === 'bhira'){
+    const exampleEmbed = new Discord.MessageEmbed()
+    .setColor('#0099ff')
+    .setTitle('Smart team Invention')
+    .setDescription('This page is not avilable')
+    .setTimestamp()
+    .setFooter('Contribute @ github: https://github.com/ronnapatsri/smartteam-bot');
+
+    msg.channel.send(exampleEmbed);
+}
+})
+
 // Clear massage section
 client.on('message', function(message) {
     if(message.content.startsWith("--clear")){
