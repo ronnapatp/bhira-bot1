@@ -1,3 +1,4 @@
+  
 const Discord = require('discord.js');
 const client = new Discord.Client();
 
@@ -88,38 +89,37 @@ client.on("message" , msg => {
 }
 })
 
-// help command
-    client.on("message" , msg => {
-        if (msg.content === '!help'){
-            const exampleEmbed = new Discord.MessageEmbed()
-        .setColor('#3498DB')
-        .setTitle('Kaolad bot help area')
-        .addFields(
-            { name: 'Command', value: '`!help commands`', inline: true},
-            { name: 'Moderator', value: '`!help moderator`', inline: true },
-            { name: 'Music', value: '`!help music`', inline: true },
-        )
-        .setTimestamp()
-        .setFooter('Kaolad bot');
-        
-        msg.channel.send(exampleEmbed);
-        }
-        })
-        
-
-// Test embed
 client.on("message" , msg => {
-if (msg.content === 'bhira'){
-    const exampleEmbed = new Discord.MessageEmbed()
-    .setColor('#0099ff')
-    .setTitle('Smart team Invention')
-    .setDescription('This page is not avilable')
+    if (msg.content === '!help-commands'){
+        const exampleEmbed = new Discord.MessageEmbed()
+        .setColor('#0099ff')
+        .setTitle('Command List')
+        .setDescription('')
+        .setTimestamp()
+        .setFooter('Contribute @ github: https://github.com/ronnapatsri/smartteam-bot');
+    
+        msg.channel.send(exampleEmbed);
+    }
+    })
+    
+// help command
+client.on("message" , msg => {
+    if (msg.content === '!help'){
+        const exampleEmbed = new Discord.MessageEmbed()
+    .setColor('#3498DB')
+    .setTitle('Kaolad bot help area')
+    .addFields(
+        { name: 'Command', value: '`!help-commands`', inline: true},
+        { name: 'Moderator', value: '`!help moderator`', inline: true },
+        { name: 'Music', value: '`!help music`', inline: true },
+    )
     .setTimestamp()
-    .setFooter('Contribute @ github: https://github.com/ronnapatsri/smartteam-bot');
-
+    .setFooter('Kaolad bot');
+    
     msg.channel.send(exampleEmbed);
-}
-})
+    }
+    })
+
 
 // Clear massage section
 client.on('message', function(message) {
@@ -142,4 +142,5 @@ client.on('message', function(message) {
     }
 
 });
-client.login('token>Here');
+
+client.login('token');
