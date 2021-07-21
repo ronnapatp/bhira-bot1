@@ -1,4 +1,4 @@
-# bhira-bot1
+# kaolad-bot1
 
 # Installation 📥
 
