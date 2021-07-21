@@ -84,23 +84,12 @@ client.on("message" , msg => {
 })
 
 client.on("message" , msg => {
-    if (msg.content === '!InviteLink'){
+    if (msg.content === '!invitelink'){
         msg.channel.send("Here is the link >> https://discord.com/api/oauth2/authorize?client_id=867031115373215795&permissions=0&scope=bot")
 }
 })
 
-client.on("message" , msg => {
-    if (msg.content === '!help-commands'){
-        const exampleEmbed = new Discord.MessageEmbed()
-        .setColor('#0099ff')
-        .setTitle('Command List')
-        .setDescription('')
-        .setTimestamp()
-        .setFooter('Contribute @ github: https://github.com/ronnapatsri/smartteam-bot');
-    
-        msg.channel.send(exampleEmbed);
-    }
-    })
+
     
 // help command
 client.on("message" , msg => {
@@ -110,13 +99,52 @@ client.on("message" , msg => {
     .setTitle('Kaolad bot help area')
     .addFields(
         { name: 'Command', value: '`!help-commands`', inline: true},
-        { name: 'Moderator', value: '`!help moderator`', inline: true },
-        { name: 'Music', value: '`!help music`', inline: true },
+        { name: 'Moderator', value: '`!help-moderator`', inline: true },
+        { name: 'Music', value: '`!help-music`', inline: true },
     )
     .setTimestamp()
     .setFooter('Kaolad bot');
     
     msg.channel.send(exampleEmbed);
+    }
+    })
+client.on("message" , msg => {
+    if (msg.content === '!help-commands'){
+        const exampleEmbed = new Discord.MessageEmbed()
+        .setColor('#0099ff')
+        .setTitle('Command List')
+        .addField('`!<emoji name>`', 'Bot will add emoji reaction to your message')
+	.addField('`!rules`', 'Show rules')
+	.addField('`!announcement`', 'Show announcement')
+	.addField('`!invitelink`', 'Show kaolad bot invite link')
+        .setTimestamp()
+        .setFooter('Kaolad bot');
+    
+        msg.channel.send(exampleEmbed);
+    }
+    })
+client.on("message" , msg => {
+    if (msg.content === '!help-moderator'){
+        const exampleEmbed = new Discord.MessageEmbed()
+        .setColor('#0099ff')
+        .setTitle('Moderator List')
+        .addField('`--clear <amount>`', 'Bot will delete message')
+        .setTimestamp()
+        .setFooter('Kaolad bot');
+    
+        msg.channel.send(exampleEmbed);
+    }
+    })
+client.on("message" , msg => {
+    if (msg.content === '!help-music'){
+        const exampleEmbed = new Discord.MessageEmbed()
+        .setColor('#0099ff')
+        .setTitle("Kaolad bot don't have this funtion")
+	.setDescript("Please use hydra or rythm !")
+        .setTimestamp()
+        .setFooter('Kaolad bot');
+    
+        msg.channel.send(exampleEmbed);
     }
     })
 
