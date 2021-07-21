@@ -75,16 +75,28 @@ client.on("message" , msg => {
         msg.react('👍');
 }
 })
+client.on("message" , msg => {
+    if (msg.content === '!confuse'){
+        msg.channel.send("Bot will add confuse emoji to your message!")
+        msg.react('🤔');
+}
+})
+
+client.on("message" , msg => {
+    if (msg.content === '!InviteLink'){
+        msg.channel.send("Here is the link >> https://discord.com/api/oauth2/authorize?client_id=867031115373215795&permissions=0&scope=bot")
+}
+})
 
 
 // Clear massage section
 client.on('message', function(message) {
     if(message.content.startsWith("--clear")){
-        message.reply('DO NOT CLEAR MORE THAN 10 MESSAGE PER TIME')
+        message.reply('Please dont clear more than 30 message PER TIME')
         const amount = message.content.split(" ")[1];
         if(!amount)
         {
-            message.reply(`--clear <amount> "DO NOT CLEAR MORE THAN 10 MESSAGE"`);
+            message.reply(`--clear <amount> " :D "`);
             return;
         }
          if(!message.member.hasPermission("MANAGE_MESSAGES"))
@@ -98,4 +110,4 @@ client.on('message', function(message) {
     }
 
 });
-client.login('token');
+client.login('ODY3MDMxMTE1MzczMjE1Nzk1.YPbLpg.Rf7C7jST8nDZK0NViAfwzXFqp9s');
