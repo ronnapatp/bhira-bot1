@@ -139,8 +139,7 @@ client.on("message" , msg => {
     if (msg.content === '!help-music'){
         const exampleEmbed = new Discord.MessageEmbed()
         .setColor('#0099ff')
-        .setTitle("Kaolad bot don't have this funtion")
-	.setDescript("Please use hydra or rythm !")
+        .setTitle("Please use hydra or rythm !")
         .setTimestamp()
         .setFooter('Kaolad bot');
     
