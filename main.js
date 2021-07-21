@@ -88,8 +88,21 @@ client.on("message" , msg => {
 }
 })
 
+// help command
+client.on("message" , msg => {
+if (msg.content === '!help'){
+    const exampleEmbed = new Discord.MessageEmbed()
+    .setColor('#0099ff')
+    .setTitle('Smart team Invention')
+    .setDescription('This page is not avilable')
+    .setTimestamp()
+    .setFooter('Contribute @ github: https://github.com/ronnapatsri/smartteam-bot');
 
+    msg.channel.send(exampleEmbed);
+}
+})
 
+// Test embed
 client.on("message" , msg => {
 if (msg.content === 'bhira'){
     const exampleEmbed = new Discord.MessageEmbed()
