@@ -144,9 +144,9 @@ client.on("message" , msg => {
         const exampleEmbed = new Discord.MessageEmbed()
         .setColor('#E74C3C')
         .setTitle('Moderator List')
-        .addField('`!clear <amount>`', 'Bot will delete message')
-        .addField('`!ban <tag people>`', 'Bot will ban member')
-        .addField('`!kick <tag prople>`', 'Bot will kick member')
+        .addField('`--clear <amount>`', 'Bot will delete message')
+        .addField('`--ban <tag people>`', 'Bot will ban member')
+        .addField('`--kick <tag prople>`', 'Bot will kick member')
         .setTimestamp()
         .setFooter('Kaolad bot');
     
@@ -168,7 +168,7 @@ client.on("message" , msg => {
 
 // Clear massage section
 client.on('message', function(message) {
-    if(message.content.startsWith("!clear")){
+    if(message.content.startsWith("--clear")){
         message.reply('DO NOT CLEAR MORE THAN 10 MESSAGE PER TIME')
         const amount = message.content.split(" ")[1];
         if(!amount)
