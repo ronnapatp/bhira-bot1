@@ -10,7 +10,7 @@ npm install discord.js
 ```
 4. Make discord bot online by using 
 ```
-node index.js
+node .
 ```
 ## Licence 🔴
 - Do not copy or modify code.
