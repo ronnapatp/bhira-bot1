@@ -1,6 +1,9 @@
-  
 const Discord = require('discord.js');
 const client = new Discord.Client();
+
+const config = require('./config.json')
+const command = require('./command')
+
 
 client.on('ready', () => {
 	console.log(`Logged in as ${client.user.tag}!`);
@@ -108,7 +111,7 @@ client.on("message" , msg => {
 client.on("message" , msg => {
     if (msg.content === '!help'){
         const exampleEmbed = new Discord.MessageEmbed()
-    .setColor('#3498DB')
+    .setColor('#E74C3C')
     .setTitle('Kaolad bot help area')
     .addFields(
         { name: 'Command', value: '`!help-commands`', inline: true},
@@ -124,12 +127,12 @@ client.on("message" , msg => {
 client.on("message" , msg => {
     if (msg.content === '!help-commands'){
         const exampleEmbed = new Discord.MessageEmbed()
-        .setColor('#0099ff')
+        .setColor('#E74C3C')
         .setTitle('Command List')
         .addField('`!<emoji name>`', 'Bot will add emoji reaction to your message')
-	.addField('`!rules`', 'Show rules')
-	.addField('`!announcement`', 'Show announcement')
-	.addField('`!invitelink`', 'Show kaolad bot invite link')
+	    .addField('`!rules`', 'Show rules')
+	    .addField('`!announcement`', 'Show announcement')
+	    .addField('`!invitelink`', 'Show kaolad bot invite link')
         .setTimestamp()
         .setFooter('Kaolad bot');
     
@@ -139,9 +142,11 @@ client.on("message" , msg => {
 client.on("message" , msg => {
     if (msg.content === '!help-moderator'){
         const exampleEmbed = new Discord.MessageEmbed()
-        .setColor('#0099ff')
+        .setColor('#E74C3C')
         .setTitle('Moderator List')
-        .addField('`--clear <amount>`', 'Bot will delete message')
+        .addField('`!clear <amount>`', 'Bot will delete message')
+        .addField('`!ban <tag people>`', 'Bot will ban member')
+        .addField('`!kick <tag prople>`', 'Bot will kick member')
         .setTimestamp()
         .setFooter('Kaolad bot');
     
@@ -151,7 +156,7 @@ client.on("message" , msg => {
 client.on("message" , msg => {
     if (msg.content === '!help-music'){
         const exampleEmbed = new Discord.MessageEmbed()
-        .setColor('#0099ff')
+        .setColor('#E74C3C')
         .setTitle("Please use hydra or rythm !")
         .setTimestamp()
         .setFooter('Kaolad bot');
@@ -163,7 +168,7 @@ client.on("message" , msg => {
 
 // Clear massage section
 client.on('message', function(message) {
-    if(message.content.startsWith("--clear")){
+    if(message.content.startsWith("!clear")){
         message.reply('DO NOT CLEAR MORE THAN 10 MESSAGE PER TIME')
         const amount = message.content.split(" ")[1];
         if(!amount)
@@ -184,4 +189,57 @@ client.on('message', function(message) {
 });
 
 
-client.login('token');
+
+client.on('ready', () => {
+    console.log('The client is ready!')
+  
+    command(client, 'ban', (message) => {
+      const { member, mentions } = message
+  
+      const tag = `<@${member.id}>`
+  
+      if (
+        member.hasPermission('ADMINISTRATOR') ||
+        member.hasPermission('BAN_MEMBERS')
+      ) {
+        const target = mentions.users.first()
+        if (target) {
+          const targetMember = message.guild.members.cache.get(target.id)
+          targetMember.ban()
+          message.channel.send(`${tag} That user has ban, BYE!`)
+        } else {
+          message.channel.send(`Please tag someone to ban.`)
+        }
+      } else {
+        message.channel.send(
+          `${tag} You do not have permission to use this command.`
+        )
+      }
+    })
+  
+    command(client, 'kick', (message) => {
+      const { member, mentions } = message
+  
+      const tag = `<@${member.id}>`
+  
+      if (
+        member.hasPermission('ADMINISTRATOR') ||
+        member.hasPermission('KICK_MEMBERS')
+      ) {
+        const target = mentions.users.first()
+        if (target) {
+          const targetMember = message.guild.members.cache.get(target.id)
+          targetMember.kick()
+          message.channel.send(`${tag} That user has kicked, BYE!`)
+        } else {
+          message.channel.send(`Please tag someone to kick.`)
+        }
+      } else {
+        message.channel.send(
+          `${tag} You do not have any permission to use this command.`
+        )
+      }
+    })
+  })
+  
+  client.login(config.token)
