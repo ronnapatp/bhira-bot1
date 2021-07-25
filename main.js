@@ -104,7 +104,7 @@ client.on("message" , msg => {
 }
 })
 client.on("message" , msg => {
-  if (msg.content === '!heppy'){
+  if (msg.content === '!happy'){
       msg.channel.send("Bot will add happy emoji to your message!")
       msg.react('😆');
 }
@@ -182,6 +182,7 @@ client.on("message" , msg => {
   }
 })
 
+
 // commands section
 client.on("message" , msg => {
     if (msg.content === '!invitelink'){
@@ -255,17 +256,6 @@ client.on("message" , msg => {
         msg.channel.send(exampleEmbed);
     }
     })
-client.on("message" , msg => {
-    if (msg.content === '!help-music'){
-        const exampleEmbed = new Discord.MessageEmbed()
-        .setColor('#E74C3C')
-        .setTitle("Please use hydra or rythm !")
-        .setTimestamp()
-        .setFooter('Kaolad bot');
-    
-        msg.channel.send(exampleEmbed);
-    }
-    })
 
 // clear
     client.on('message', function(message) {
@@ -288,8 +278,32 @@ client.on("message" , msg => {
       }
   
   });
+// about kaolad bot
 
+client.on("message" , msg => {
+  if (msg.content === '!aboutbot'){
+    const exampleEmbed = new Discord.MessageEmbed()
+    .setColor('#E74C3C')
+    .setTitle('Kaolad bot')
+    .setURL('https://discord.js.org/')
+    .setAuthor('About kaolad bot V.1.0.0', 'https://i.imgur.com/wSTFkRM.png', 'https://discord.js.org')
+    .setDescription('Some description here')
+    .setThumbnail('https://i.imgur.com/wSTFkRM.png')
+    .addFields(
+      { name: 'Regular field title', value: 'Some value here' },
+      { name: '\u200B', value: '\u200B' },
+      { name: 'Inline field title', value: 'Some value here', inline: true },
+      { name: 'Inline field title', value: 'Some value here', inline: true },
+    )
+    .addField('Inline field title', 'Some value here', true)
+    .setImage('https://i.imgur.com/wSTFkRM.png')
+    .setTimestamp()
+    .setFooter('Some footer text here', 'https://i.imgur.com/wSTFkRM.png');
   
+  channel.send(exampleEmbed);
+  }
+  })
+
 // kick and ban
   
     command(client, 'ban', (message) => {
