@@ -1,3 +1,6 @@
+# THIS IS VERTION 1 PLEASE GO TO VERSION 2 [BY CLICK HERE](https://github.com/ronnapatp/kaoladbot)
+
+
 # kaolad-bot1
 
 # Installation 📥
