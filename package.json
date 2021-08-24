@@ -1,19 +1,14 @@
 {
-  "name": "bhira-bot",
+  "name": "discord",
   "version": "1.0.0",
   "description": "",
   "main": "main.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [],
-  "author": "",
+  "author": "ronnapatp",
   "license": "ISC",
   "dependencies": {
-    "discord.js": "^12.5.3",
-    "discord.js-utils": "^1.1.1",
-    "main.js": "0.0.1",
-    "util": "^0.12.4",
-    "util.js": "0.0.0"
+    "discord.js": "^12.5.3"
   }
 }

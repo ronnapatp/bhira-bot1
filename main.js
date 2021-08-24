@@ -1,384 +1,58 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
+const config = require('./config.json');
+const command = require('./commands/index');
+const help = require('./commands/help');
+const kick = require('./moderator/kick');
+const ban = require('./moderator/ban');
+const clear = require('./moderator/delete');
+const rules = require('./commands/rules');
+const rulesth = require('./commands/rulesth');
+const announcement = require('./commands/announc');
+const poll = require('./commands/poll');
+const reaction = require('./commands/reaction');
+const info = require('./commands/info');
+const role = require('./commands/role')
+const welcome = require('./moderator/welcome')
+const political = require('./commands/political')
+const donate = require('./commands/donate')
+const badw = require('./moderator/badword')
+//const joke = require('./command/joke')
+const pword = require('./moderator/politicalword')
+const mute = require('./moderator/mute')
+const unmute = require('./moderator/unmute')
+const poll2 = require('./moderator/poll')
+const afk = require('./commands/afk')
 
-
-const config = require('./config.json')
-const command = require('./command')
-const poll = require('./poll')
-
-
-
-client.on('ready', () => {
-	console.log(`Logged in as ${client.user.tag}!`);
-    client.user.setActivity("!help", { type: "PLAYING"})
-    
-  poll(client)
-  
-  
-});
-
-
-
-// Emoji section
-client.on("message" , msg => {
-    if (msg.content === '!smile'){
-        msg.channel.send("Bot will add smile emoji to your message!")
-        msg.react('😀');
-}
-})
-
-client.on("message" , msg => {
-    if (msg.content === '!sad'){
-        msg.channel.send("Bot will add sad emoji to your message!")
-        msg.react('😭');
-}
-})
-client.on("message" , msg => {
-    if (msg.content === '!shock'){
-        msg.channel.send("Bot will add shock emoji to your message!")
-        msg.react('😱');
-}
-})
-client.on("message" , msg => {
-    if (msg.content === '!sick'){
-        msg.channel.send("Bot will add sick emoji to your message!")
-        msg.react('😷');
-}
-})
-client.on("message" , msg => {
-    if (msg.content === '!police'){
-        msg.channel.send("Bot will add police emoji to your message!")
-        msg.react('👮');
-        msg.react('👮‍♀️');
-}
-})
-client.on("message" , msg => {
-    if (msg.content === '!dog'){
-        msg.channel.send("Bot will add dog emoji to your message!")
-        msg.react('🐶');
-}
-})
-client.on("message" , msg => {
-    if (msg.content === '!cat'){
-        msg.channel.send("Bot will add cat emoji to your message!")
-        msg.react('🐱');
-}
-})
-client.on("message" , msg => {
-    if (msg.content === '!monkey'){
-        msg.channel.send("Bot will add monkey emoji to your message!")
-        msg.react('🐵');
-}
-})
-client.on("message" , msg => {
-    if (msg.content === '!thumbup'){
-        msg.channel.send("Bot will add thumbup emoji to your message!")
-        msg.react('👍');
-}
-})
-
-client.on("message" , msg => {
-    if (msg.content === '!confuse'){
-        msg.channel.send("Bot will add confuse emoji to your message!")
-        msg.react('🤔');
-}
-})
-
-client.on("message" , msg => {
-  if (msg.content === '!shy'){
-      msg.channel.send("Bot will add shy emoji to your message!")
-      msg.react('🤣');
-}
-})
-
-client.on("message" , msg => {
-  if (msg.content === '!heart'){
-      msg.channel.send("Bot will add heart emoji to your message!")
-      msg.react('❤️');
-}
-})
-client.on("message" , msg => {
-    if (msg.content === '!angry'){
-        msg.channel.send("Bot will add angry emoji to your message!")
-        msg.react('🤬');
-}
-})
-client.on("message" , msg => {
-  if (msg.content === '!happy'){
-      msg.channel.send("Bot will add happy emoji to your message!")
-      msg.react('😆');
-}
-})
-client.on("message" , msg => {
-  if (msg.content === '!cold'){
-      msg.channel.send("Bot will add cold emoji to your message!")
-      msg.react('🥶');
-}
-})
-client.on("message" , msg => {
-  if (msg.content === '!evil'){
-      msg.channel.send("Bot will add evil emoji to your message!")
-      msg.react('😈');
-}
-})
-client.on("message" , msg => {
-  if (msg.content === '!thumbdown'){
-      msg.channel.send("Bot will add thumbdown emoji to your message!")
-      msg.react('👎');
-}
-})
-client.on("message" , msg => {
-  if (msg.content === '!ok'){
-      msg.channel.send("Bot will add evil emoji to your message!")
-      msg.react('👌');
-}
-})
-client.on("message" , msg => {
-  if (msg.content === '!thanks'){
-      msg.channel.send("Bot will add thanks emoji to your message!")
-      msg.react('🙏');
-}
-})
-client.on("message" , msg => {
-  if (msg.content === '!poopoo'){
-      msg.channel.send("Bot will add poopoo emoji to your message!")
-      msg.react('💩');
-}
-})
-client.on("message" , msg => {
-  if (msg.content === '!clown'){
-      msg.channel.send("Bot will add clown emoji to your message!")
-      msg.react('🤡');
-}
-})
-client.on("message" , msg => {
-  if (msg.content === '!ghost'){
-      msg.channel.send("Bot will add ghost emoji to your message!")
-      msg.react('👻');
-}
-})
-client.on("message" , msg => {
-  if (msg.content === '!robot'){
-      msg.channel.send("Bot will add robot emoji to your message!")
-      msg.react('🤖');
-}
-})
-client.on("message" , msg => {
-  if (msg.content === '!bell'){
-      msg.channel.send("Bot will add robot emoji to your message!")
-      msg.react('🔔');
-}
-})
-client.on("message" , msg => {
-  if (msg.content === '!hacker'){
-      msg.channel.send("Bot will add hacker emoji to your message!")
-      msg.react('👨‍💻');
-}
-})
-client.on("message" , msg => {
-  if (msg.content === '!eat'){
-      msg.channel.send("Bot will add eat emoji to your message!")
-      msg.react('🍴');
-  }
-})
-
-
-// commands section
-client.on("message" , msg => {
-    if (msg.content === '!invitelink'){
-        msg.channel.send("Here is the link >> https://discord.com/api/oauth2/authorize?client_id=867031115373215795&permissions=0&scope=bot")
-}
-})
-client.on("message" , msg => {
-  if (msg.content === '!rules'){
-      msg.channel.send("Please go to <#853526088473640970> 😄");
-}
-})
-client.on("message" , msg => {
-  if (msg.content === '!announcement'){
-      msg.channel.send("Please go to <#853570792973008907> 😄");
-}
-})
-client.on("message" , msg => {
-  if (msg.content === '!event'){
-      msg.channel.send("Please go to <#862201817457754172> 😄");
-}
-})
-
-
-
-    
-// help command
-client.on("message" , msg => {
-    if (msg.content === '!help'){
-        const exampleEmbed = new Discord.MessageEmbed()
-    .setColor('#E74C3C')
-    .setTitle('Kaolad bot help area')
-    .addFields(
-        { name: 'Command', value: '`!help-commands`', inline: true},
-        { name: 'Moderator', value: '`!help-moderator`', inline: true },
-        { name: 'Music', value: '`!help-music`', inline: true },
-    )
-    .setTimestamp()
-    .setFooter('Kaolad bot');
-    
-    msg.channel.send(exampleEmbed);
-    }
-    })
-client.on("message" , msg => {
-    if (msg.content === '!help-commands'){
-        const exampleEmbed = new Discord.MessageEmbed()
-        .setColor('#E74C3C')
-        .setTitle('Command List')
-        .addField('`!<emoji name>`', 'Bot will add emoji reaction to your message')
-	    .addField('`!rules`', 'Show rules')
-	    .addField('`!announcement`', 'Show announcement')
-	    .addField('`!invitelink`', 'Show kaolad bot invite link')
-      .addField('`!event`', 'Show event after school')
-        .setTimestamp()
-        .setFooter('Kaolad bot');
-    
-        msg.channel.send(exampleEmbed);
-    }
-    })
-client.on("message" , msg => {
-    if (msg.content === '!help-moderator'){
-        const exampleEmbed = new Discord.MessageEmbed()
-        .setColor('#E74C3C')
-        .setTitle('Moderator List')
-        .setDescription('Only moderator can use this command')
-        .addField('`--clear <amount>`', 'Bot will delete message')
-        .addField('`--ban <tag people>`', 'Bot will ban member')
-        .addField('`--kick <tag prople>`', 'Bot will kick member')
-        .setTimestamp()
-        .setFooter('Kaolad bot');
-    
-        msg.channel.send(exampleEmbed);
-    }
-    })
-
-// clear
-    client.on('message', function(message) {
-      if(message.content.startsWith("--clear")){
-          message.reply('DO NOT CLEAR MORE THAN 10 MESSAGE PER TIME')
-          const amount = message.content.split(" ")[1];
-          if(!amount)
-          {
-              message.reply(`--clear <amount> "DO NOT CLEAR MORE THAN 10 MESSAGE"`);
-              return;
-          }
-           if(!message.member.hasPermission("MANAGE_MESSAGES"))
-           {
-              message.channel.send('You have no permissions to do that');
-              return;
-           }
-          message.channel.bulkDelete(amount)
-      .then(messages => message.channel.send(`Messages deleted by ${message.author.username}`))
-      .catch(console.error);
-      }
-  
-  });
-// about kaolad bot
-
-client.on("message" , msg => {
-  if (msg.content === '!aboutbot'){
-    const exampleEmbed = new Discord.MessageEmbed()
-    .setColor('#E74C3C')
-    .setTitle('Kaolad bot')
-    .setURL('https://discord.js.org/')
-    .setAuthor('About kaolad bot V.1.0.0', 'https://i.imgur.com/wSTFkRM.png', 'https://discord.js.org')
-    .setDescription('Some description here')
-    .setThumbnail('https://i.imgur.com/wSTFkRM.png')
-    .addFields(
-      { name: 'Regular field title', value: 'Some value here' },
-      { name: '\u200B', value: '\u200B' },
-      { name: 'Inline field title', value: 'Some value here', inline: true },
-      { name: 'Inline field title', value: 'Some value here', inline: true },
-    )
-    .addField('Inline field title', 'Some value here', true)
-    .setImage('https://i.imgur.com/wSTFkRM.png')
-    .setTimestamp()
-    .setFooter('Some footer text here', 'https://i.imgur.com/wSTFkRM.png');
-  
-  channel.send(exampleEmbed);
-  }
+client.on('ready', async () => {
+    console.log('The client is ready!')
+    client.user.setActivity("!help", { type: "PLAYING"});
+    client.channels.cache.get('841948325406048267').send('***TRAIN APPROUCHING ***');
+    client.channels.cache.get('841948325406048267').send('PLATFORM 3 KAOLAD LINE TRAIN TO SLEEPING');
+    client.channels.cache.get('841948325406048267').send('THE NEXT STATION IS BORNING CLASS');
+    command(client)
+    help(client)
+    kick(client)
+    ban(client)
+    clear(client)
+    rules(client)
+    rulesth(client)
+    announcement(client)
+    poll(client)
+    reaction(client)
+    info(client)
+    role(client)
+    welcome(client)  
+    political(client)  
+    donate(client)
+    badw(client)
+    //joke(client)
+    pword(client)
+    mute(client)
+    unmute(client)
+    poll2(client)
+    afk(client)
   })
+  
 
-// kick and ban
-  
-    command(client, 'ban', (message) => {
-      const { member, mentions } = message
-  
-      const tag = `<@${member.id}>`
-  
-      if (
-        member.hasPermission('ADMINISTRATOR') ||
-        member.hasPermission('BAN_MEMBERS')
-      ) {
-        const target = mentions.users.first()
-        if (target) {
-          const targetMember = message.guild.members.cache.get(target.id)
-          targetMember.ban()
-          message.channel.send(`${tag} That user has ban, BYE!`)
-        } else {
-          message.channel.send(`Please tag someone to ban.`)
-        }
-      } else {
-        message.channel.send(
-          `${tag} You do not have permission to use this command.`
-        )
-      }
-    })
-  
-    command(client, 'kick', (message) => {
-      const { member, mentions } = message
-  
-      const tag = `<@${member.id}>`
-  
-      if (
-        member.hasPermission('ADMINISTRATOR') ||
-        member.hasPermission('KICK_MEMBERS')
-      ) {
-        const target = mentions.users.first()
-        if (target) {
-          const targetMember = message.guild.members.cache.get(target.id)
-          targetMember.kick()
-          message.channel.send(`${tag} That user has kicked, BYE!`)
-        } else {
-          message.channel.send(`Please tag someone to kick.`)
-        }
-      } else {
-        message.channel.send(
-          `${tag} You do not have any permission to use this command.`
-        )
-      }
-    })
-    command(client, 'warn', (message) => {
-      const { member, mentions } = message
-  
-      const tag = `<@${member.id}>`
-  
-      if (
-        member.hasPermission('ADMINISTRATOR') ||
-        member.hasPermission('MANAGE_ROLES')
-      ) {
-        const target = mentions.users.first()
-        if (target) {
-          const targetMember = message.guild.members.cache.get(target.id)
-          let role = message.guild.roles.cache.find(r => r.id === "867721601133969418");
-          let member = message.mentions.members.first(target);
-          member.roles.add(role);
-          message.channel.send(`${tag} Add warn roles sucess`)
-        } else {
-          message.channel.send(`Please tag someone to add warn roles`)
-        }
-      } else {
-        message.channel.send(
-          `${tag} You do not have any permission to use this command.`
-        )
-      }
-    
-    })
-  
-  
-  client.login(config.token)
+client.login(config.token);
